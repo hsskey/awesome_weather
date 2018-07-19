@@ -5,7 +5,8 @@ export default class App extends React.Component {
   render() {
     return (
       <View style={styles.container}>
-        <Text>Hello React Native World</Text>
+        <View style={styles.redView}/>
+        <View style={styles.yellowView}/>
       </View>
     );
   }
@@ -18,4 +19,14 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
+  redView: {
+    height: 50,
+    width: 50,
+    backgroundColor : 'red'
+  },
+  yellowView: {
+    height: 50,
+    width: 50,
+    backgroundColor : 'yellow'
+  }
 });
