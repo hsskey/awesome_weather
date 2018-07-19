@@ -1,12 +1,22 @@
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import React, {Component} from 'react';
+import { StyleSheet, Text, View,StatusBar } from 'react-native';
+import { Directions } from 'react-native-gesture-handler';
+import Weather from './Weather';
 
-export default class App extends React.Component {
+export default class App extends Component {
+  state ={
+    isLoaded : true
+  };
   render() {
+    const {isLoaded} = this.state;
     return (
       <View style={styles.container}>
-        <View style={styles.redView}/>
-        <View style={styles.yellowView}/>
+        <StatusBar hidden={true} />
+        {isLoaded? <Weather />:(
+          <View style={styles.loading}>
+          <Text style={styles.loadingText}>Getting the awesome weather</Text>
+        </View>
+        )}
       </View>
     );
   }
@@ -15,18 +25,16 @@ export default class App extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+    backgroundColor: '#fff'
   },
-  redView: {
-    height: 50,
-    width: 50,
-    backgroundColor : 'red'
+  loading:{
+    flex:1,
+    backgroundColor:"#FDF6AA",
+    justifyContent:"flex-end",
+    paddingLeft:25
   },
-  yellowView: {
-    height: 50,
-    width: 50,
-    backgroundColor : 'yellow'
+  loadingText:{
+    fontSize: 38,
+    marginBottom: 100
   }
 });
